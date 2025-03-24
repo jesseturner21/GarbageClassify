@@ -3,3 +3,5 @@ Garbage_Classification/
 .DS_Store
 ../
 ./garbage
+*.pth
+

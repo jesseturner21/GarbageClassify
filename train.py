@@ -40,7 +40,7 @@ class SimpleCNN(nn.Module):
         x = self.pool(F.relu(self.conv3(x)))  # Third conv + ReLU + pooling
         x = x.view(x.size(0), -1)             # Flatten feature maps
         x = F.relu(self.fc1(x))               # Fully connected layer with ReLU
-        x = self.fc2(x)                       # Output layer (logits)
+        x = self.fc2(x)                       # Output layer 
         return x
 
 model = SimpleCNN(num_classes=2)
@@ -101,4 +101,8 @@ test_image_path = 'plastictest.jpg'  # Replace with your image path
 predicted_class_index = predict_image(test_image_path, model, transform)
 classes = train_dataset.classes  # Class names from the dataset
 print("Predicted class:", classes[predicted_class_index])
+
+# save the model that we trained
+torch.save(model.state_dict(), "model.pth")
+
 
