@@ -1,4 +1,6 @@
+flask
 torch 
 torchvision
 torchaudio
 kagglehub
+streamlit

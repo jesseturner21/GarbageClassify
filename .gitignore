@@ -4,4 +4,6 @@ Garbage_Classification/
 ../
 ./garbage
 *.pth
+__pycache__/
+*.py[cod]
 

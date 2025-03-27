@@ -1,10 +1,11 @@
-# utils.py
+
 import torch
 import torchvision.transforms as transforms
 import PIL.Image
-from model_def import SimpleCNN  # your model class
+from model_def import SimpleCNN  
 
-# Same transform used in training
+
+# to transform the image to be the same as what we trained it on 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
@@ -20,12 +21,9 @@ def load_model(model_path="model.pth", num_classes=2):
 
 def predict(image_file, model, class_names):
     image = PIL.Image.open(image_file).convert("RGB")
-    image = transform(image).unsqueeze(0)  # Add batch dimension
+    image = transform(image).unsqueeze(0)  
     with torch.no_grad():
         outputs = model(image)
         _, predicted = torch.max(outputs, 1)
     return class_names[predicted.item()]
 
-
-model = load_model()
-model.predict()
